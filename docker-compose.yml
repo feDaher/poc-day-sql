@@ -1,0 +1,30 @@
+version: '3'
+services:
+  loja-postgres:
+    image: postgres:12-alpine
+    volumes:
+      - ./.data/postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: loja
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Test1234
+    ports:
+      - '5432:5432'
+    networks:
+      - loja_internal
+
+  loja-redis:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./.data/redis:/data
+    entrypoint: redis-server --appendonly yes
+    restart: always
+    networks:
+      - loja_internal
+
+networks:
+  loja_internal:
+    external:
+      name: loja_internal

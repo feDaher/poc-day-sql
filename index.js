@@ -40,27 +40,27 @@ const insertData = async () => {
     await pool.query(`
       INSERT INTO clientes (nome, email) VALUES 
       ('Ana Silva', 'ana.silva@example.com'),
-      ('João Souza', 'joao.souza@example.com');
+      ('João Souza', 'joao.souza@example.com'),
       ('Carlos Silva', 'carlos.silva@example.com'),
-      ('Maria Oliveira', 'maria.oliveira@example.com');
+      ('Maria Oliveira', 'maria.oliveira@example.com'),
 
       INSERT INTO produtos (nome, preco) VALUES 
       ('Produto A', 10.50),
-      ('Produto B', 20.30);
+      ('Produto B', 20.30),
       ('Produto C', 30.50),
-      ('Produto D', 40.75);
+      ('Produto D', 40.75),
 
       INSERT INTO pedidos (cliente_id, data_pedido) VALUES 
       (1, '2023-09-21'),
-      (2, '2023-09-22');
+      (2, '2023-09-22'),
       (3, '2023-09-23'),
-      (4, '2023-09-24');
+      (4, '2023-09-24'),
 
       INSERT INTO itens_de_pedidos (pedido_id, produto_id, quantidade, preco_unitario) VALUES 
       (1, 1, 2, 10.50),
-      (2, 2, 1, 20.30);
+      (2, 2, 1, 20.30),
       (3, 3, 1, 30.50),
-      (4, 4, 2, 40.75);
+      (4, 4, 2, 40.75),
     `);
     console.log('Dados inseridos com sucesso!');
   } catch (error) {
@@ -69,7 +69,7 @@ const insertData = async () => {
 };
 
 const runApp = async () => {
-  await createTables();
+  // await createTables();
   await insertData();
 };
 
